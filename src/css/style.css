@@ -89,6 +89,7 @@ h2 {
 }
 
 .footer{
+  z-index: 1;
     display: flex;
     flex-wrap: wrap;
     position: fixed;
@@ -108,13 +109,125 @@ h2 {
 
 .title{
     display: flex;
+    flex-direction: column;
     text-align: left;
-    justify-content: left;
-    align-items: center;
+    justify-content: center;
+    align-items: left;
     color: rgba(41, 56, 69, 1);
     font-size: 26px;
     font-weight: 400;
     max-width: 260px;
+}
+.title div{
+  padding-top: 10px;
+}
+
+.seats{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 24px;
+}
+
+.seat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  background-color: rgba(195, 207, 217, 1);
+  border: 1px solid rgba(128, 143, 157, 1);
+  border-radius: 12px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 11px;
+  font-weight: 400;
+  margin-right: 7px;
+  margin-bottom: 18px;
+}
+
+.legend-color{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 -20px;
+}
+.legend-text{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  color: rgba(78, 90, 101, 1);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.legend-color div{
+  width: 25px;
+  height: 25px;
+  border-radius: 17px;
+}
+
+.selected{
+  border: 1px solid rgba(26, 174, 158, 1);
+  background-color: rgba(141, 215, 207, 1);
+}
+.available{
+  border: 1px solid rgba(123, 139, 153, 1);
+  background-color: rgba(195, 207, 217, 1);
+}
+.unavailable{
+  border: 1px solid rgba(247, 197, 43, 1);
+  background-color: rgba(251, 225, 146, 1);
+}
+.legends p{
+  width: 33%;
+}
+
+.buyer-data{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.buyer-data p{
+  width: 90%;
+  justify-content: left;
+  color: rgba(41, 56, 69, 1);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.buyer-data input{
+  color: rgba(41, 56, 69, 1);
+  font-size: 18px;
+  font-weight: 400;
+  padding: 18px;
+  height: 51px;
+  width: 90%;
+  margin-bottom: 7px;
+}
+input::placeholder{
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.end-button{
+  margin-top: 55px;
+  padding-bottom: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.end-button div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 70%;
+  background-color: rgba(232, 131, 58, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 400;
 }
 
 @media (max-width: 375px) {

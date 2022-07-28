@@ -26,6 +26,7 @@ export default function Sessions() {
         {days.map((session, index) => (
           <Session
             key={index}
+            id={session.id}
             date={session.date}
             weekday={session.weekday}
             showtimes={session.showtimes}
@@ -37,7 +38,7 @@ export default function Sessions() {
   );
 }
 
-function Session({ date, weekday, showtimes }) {
+function Session({ id, date, weekday, showtimes }) {
   return (
     <>
       <h3>
@@ -45,17 +46,19 @@ function Session({ date, weekday, showtimes }) {
       </h3>
       <div className="movie-hours">
         {showtimes.map((time) => (
-          <Times key={time.id} name={time.name} />
+          <Times key={time.id} id = {time.id} name={time.name} />
         ))}
       </div>
     </>
   );
 }
 
-function Times({ name }) {
+function Times({ id, name }) {
   return (
     <>
-      <div className="time">{name}</div>
+      <Link to={`/assentos/${id}`}>
+        <div className="time">{name}</div>
+      </Link>
     </>
   );
 }
