@@ -24,9 +24,6 @@ export default function Seats() {
       setDayInfo(res.data.day);
     });
   }, []);
-  //console.log(seats);
-  console.log(selectSeats);
-  //console.log(movieInfo);
 
   return (
     <>

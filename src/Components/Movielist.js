@@ -35,7 +35,7 @@ function Movie({id, posterURL}){
 return (
     <div className="movie">
         <Link to={`/sessoes/${id}`}>
-        <img src={posterURL} />
+        <img src={posterURL} alt="poster"/>
         </Link>
     </div>
 )}

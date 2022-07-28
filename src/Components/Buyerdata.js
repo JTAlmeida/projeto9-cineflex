@@ -10,11 +10,11 @@ export default function Buyerdata() {
         <input placeholder="Digite seu CPF..."></input>
       </div>
 
-      <Link to="/sucesso">
-        <div className="end-button">
-          <div>Reservar assento(s)</div>
-        </div>
-      </Link>
+      <div className="end-of-page">
+        <Link to="/sucesso">
+          <div className="end-button">Reservar assento(s)</div>
+        </Link>
+      </div>
     </>
   );
 }

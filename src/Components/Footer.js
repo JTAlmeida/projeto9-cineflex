@@ -4,14 +4,14 @@ export default function Footer({ title, posterURL, weekday, time }) {
       {!weekday ? (
         <div className="footer">
           <div className="movie">
-            <img src={posterURL} />
+            <img src={posterURL} alt="poster"/>
           </div>
           <div className="title">{title}</div>
         </div>
       ) : (
         <div className="footer">
           <div className="movie">
-            <img src={posterURL} />
+            <img src={posterURL} alt="poster" />
           </div>
           <div className="title">
             {title}
