@@ -56,5 +56,66 @@ h2 {
   height: 100%;
 }
 
+.sessions{
+    margin-left: 24px;
+    padding-bottom: 120px;
+}
+
+.sessions h3{
+    color: rgba(41, 56, 69, 1);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 22px;
+}
+
+.movie-hours{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 23px;   
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 43px;
+    width: 83px;
+    margin-right: 8px;
+    background-color: rgba(232, 131, 58, 1);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    min-height: 117px;
+    width: 375px;
+    background-color: rgba(158, 173, 186, 1);
+}
+
+.footer .movie{
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    width: 20%;
+    margin: 14px;
+}
+
+.title{
+    display: flex;
+    text-align: left;
+    justify-content: left;
+    align-items: center;
+    color: rgba(41, 56, 69, 1);
+    font-size: 26px;
+    font-weight: 400;
+    max-width: 260px;
+}
+
 @media (max-width: 375px) {
 }

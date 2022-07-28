@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Movielist() {
-  const [movies, setMovies] = React.useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const requisicao = axios.get(
+    const request = axios.get(
       "https://mock-api.driven.com.br/api/v5/cineflex/movies"
     );
 
-    requisicao.then((res) => {
+    request.then((res) => {
       setMovies(res.data);
     });
   }, []);
-  console.log(movies);
 
   return (
     <>

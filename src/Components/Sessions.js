@@ -1,5 +1,60 @@
-export default function Sessions(){
-    return (
-        <></>
-    )
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import Footer from "./Footer";
+
+export default function Sessions() {
+  const { idFilme } = useParams();
+  const [sessions, setSessions] = useState([]);
+
+  useEffect(() => {
+    const request = axios.get(
+      `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`
+    );
+
+    request.then((res) => {
+      setSessions(res.data);
+    });
+  }, []);
+  console.log(sessions);
+  return (
+    <>
+      <h2>Selecione o horário</h2>
+      <div className="sessions">
+        {sessions.days.map((session, index) => (
+          <Session
+            key={index}
+            date={session.date}
+            id={session.id}
+            weekday={session.weekday}
+            showtimes={session.showtimes}
+          />
+        ))}
+      </div>
+      <Footer title={sessions.title} posterURL={sessions.posterURL} />
+    </>
+  );
+}
+
+function Session({ date, id, weekday, showtimes }) {
+  return (
+    <>
+      <h3>
+        {weekday} - {date}
+      </h3>
+      <div className="movie-hours">
+        {showtimes.map((time) => (
+          <Times key={time.id} name={time.name} />
+        ))}
+      </div>
+    </>
+  );
+}
+
+function Times({ name }) {
+  return (
+    <>
+      <div className="time">{name}</div>
+    </>
+  );
 }
