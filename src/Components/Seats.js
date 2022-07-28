@@ -11,10 +11,12 @@ export default function Seats() {
   const [selectSeats, setSelectSeats] = useState([]);
   const [movieInfo, setMovieInfo] = useState([]);
   const [dayInfo, setDayInfo] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
+  console.log(selectedSeats);
   useEffect(() => {
     const request = axios.get(
-      `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
+      `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`
     );
 
     request.then((res) => {
@@ -35,6 +37,8 @@ export default function Seats() {
             id={selectSeat.id}
             name={selectSeat.name}
             availability={selectSeat.isAvailable}
+            selectedSeats={selectedSeats}
+            setSelectedSeats={setSelectedSeats}
           />
         ))}
       </div>
@@ -52,18 +56,40 @@ export default function Seats() {
   );
 }
 
-function Seat({ id, name, availability }) {
-  if (availability === "true") {
+function Seat({ id, name, availability, selectedSeats, setSelectedSeats }) {
+  const [selected, setSelected] = useState(false);
+
+  if (availability === true && selected === false) {
     return (
-      <div className="seat" onClick="">
+      <div
+        className="seat"
+        onClick={() => {
+          setSelected(!selected);
+          setSelectedSeats([...selectedSeats, id]);
+        }}
+      >
+        {name}
+      </div>
+    );
+  } else if (availability === true && selected === true) {
+    let temp = [];
+    return (
+      <div
+        className="seat selected"
+        onClick={() => {
+          setSelected(!selected);
+          for(let i = 0; i<selectedSeats.length; i++){
+            if (selectedSeats[i]!==id){
+              temp.push(selectedSeats[i])
+            }
+          }
+          setSelectedSeats(temp);
+        }}
+      >
         {name}
       </div>
     );
   } else {
-    return (
-      <div className="seat unavailable">
-        {name}
-      </div>
-    );
+    return <div className="seat unavailable">{name}</div>;
   }
 }
