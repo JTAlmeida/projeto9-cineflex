@@ -143,6 +143,9 @@ h2 {
   margin-right: 7px;
   margin-bottom: 18px;
 }
+.seat:hover{
+  cursor: pointer;
+}
 
 .legend-color{
   display: flex;

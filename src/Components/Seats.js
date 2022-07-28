@@ -12,8 +12,8 @@ export default function Seats() {
   const [movieInfo, setMovieInfo] = useState([]);
   const [dayInfo, setDayInfo] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedSeatsNames, setSelectedSeatsNames] = useState([]);
 
-  console.log(selectedSeats);
   useEffect(() => {
     const request = axios.get(
       `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`
@@ -39,6 +39,8 @@ export default function Seats() {
             availability={selectSeat.isAvailable}
             selectedSeats={selectedSeats}
             setSelectedSeats={setSelectedSeats}
+            selectedSeatsNames={selectedSeatsNames}
+            setSelectedSeatsNames={setSelectedSeatsNames}
           />
         ))}
       </div>
@@ -56,7 +58,7 @@ export default function Seats() {
   );
 }
 
-function Seat({ id, name, availability, selectedSeats, setSelectedSeats }) {
+function Seat({ id, name, availability, selectedSeats, setSelectedSeats, selectedSeatsNames, setSelectedSeatsNames }) {
   const [selected, setSelected] = useState(false);
 
   if (availability === true && selected === false) {
@@ -66,24 +68,34 @@ function Seat({ id, name, availability, selectedSeats, setSelectedSeats }) {
         onClick={() => {
           setSelected(!selected);
           setSelectedSeats([...selectedSeats, id]);
+          setSelectedSeatsNames([...selectedSeatsNames, Number(name)])
         }}
       >
         {name}
       </div>
     );
   } else if (availability === true && selected === true) {
-    let temp = [];
+    let tempID = [];
+    let tempName = [];
     return (
       <div
         className="seat selected"
         onClick={() => {
           setSelected(!selected);
+
           for(let i = 0; i<selectedSeats.length; i++){
             if (selectedSeats[i]!==id){
-              temp.push(selectedSeats[i])
+              tempID.push(selectedSeats[i])
             }
           }
-          setSelectedSeats(temp);
+          setSelectedSeats(tempID);
+
+          for(let i = 0; i<selectedSeatsNames.length; i++){
+            if (selectedSeatsNames[i]!==Number(name)){
+              tempName.push(selectedSeatsNames[i])
+            }
+          }
+          setSelectedSeatsNames(tempName);
         }}
       >
         {name}
