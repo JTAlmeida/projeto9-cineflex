@@ -6,6 +6,7 @@ import Footer from "./Footer";
 export default function Sessions() {
   const { idFilme } = useParams();
   const [sessions, setSessions] = useState([]);
+  const [days, setDays] = useState([]);
 
   useEffect(() => {
     const request = axios.get(
@@ -14,18 +15,18 @@ export default function Sessions() {
 
     request.then((res) => {
       setSessions(res.data);
+      setDays(res.data.days);
     });
   }, []);
-  console.log(sessions);
+
   return (
     <>
       <h2>Selecione o horário</h2>
       <div className="sessions">
-        {sessions.days.map((session, index) => (
+        {days.map((session, index) => (
           <Session
             key={index}
             date={session.date}
-            id={session.id}
             weekday={session.weekday}
             showtimes={session.showtimes}
           />
@@ -36,7 +37,7 @@ export default function Sessions() {
   );
 }
 
-function Session({ date, id, weekday, showtimes }) {
+function Session({ date, weekday, showtimes }) {
   return (
     <>
       <h3>
