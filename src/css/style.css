@@ -2,7 +2,7 @@
 
 html,
 body {
-  height: 100%;
+  height: auto;
 }
 
 .root {
@@ -189,7 +189,7 @@ h2 {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.buyer-data p{
+.buyer-data label{
   width: 90%;
   justify-content: left;
   color: rgba(41, 56, 69, 1);
@@ -217,6 +217,7 @@ input::placeholder{
   margin-top: 55px;
   padding-bottom: 150px;
   width: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
 }
@@ -230,7 +231,38 @@ input::placeholder{
   color: rgba(255, 255, 255, 1);
   font-size: 18px;
   font-weight: 400;
+  border: none;
   border-radius: 3px;
+}
+.end-button:hover{
+  cursor:pointer;
+}
+
+.sucess {
+  margin-left: 20px;
+}
+.sucess h2{
+  color: rgba(36, 122, 107, 1);
+  font-weight: 700;
+  text-align: center;
+}
+.sucess h3{
+  color: rgba(41, 56, 69, 1);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.sucess p{
+  color: rgba(41, 56, 69, 1);
+  margin-bottom: 5px;
+  font-size: 22px;
+  font-weight: 400;
+}
+.tickets{
+  margin-top: 50px;
+}
+.buyer{
+  margin-top: 50px;
 }
 
 @media (max-width: 375px) {
