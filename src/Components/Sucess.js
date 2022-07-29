@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Sucess({ sucessInfo, setSucessInfo }) {
   function mascaraCpf(valor) {
     return valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4");
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [useLocation()]);
 
   return (
     <>
@@ -20,8 +25,9 @@ export default function Sucess({ sucessInfo, setSucessInfo }) {
         </p>
 
         <h3 className="tickets">Ingressos</h3>
-        {sucessInfo.seats.map((seat) => (
-          <p>Assento {seat}</p>
+        {sucessInfo.seats.map((seat, index) => 
+        (
+          <p key={index}>Assento {seat}</p>
         ))}
 
         <h3 className="buyer">Comprador</h3>

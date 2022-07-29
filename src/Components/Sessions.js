@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
 
@@ -8,6 +8,10 @@ export default function Sessions() {
   const [sessions, setSessions] = useState([]);
   const [days, setDays] = useState([]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [useLocation()]);
+  
   useEffect(() => {
     const request = axios.get(
       `https://mock-api.driven.com.br/api/v7/cineflex/movies/${idFilme}/showtimes`

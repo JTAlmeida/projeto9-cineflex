@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import Legends from "./Legends";
 import Footer from "./Footer";
@@ -16,6 +16,10 @@ export default function Seats({ setSucessInfo, sucessInfo }) {
   const [name, setName] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [useLocation()]);
 
   function cpfIsValid() {
     if (cpf.length !== 11) {
@@ -65,7 +69,7 @@ export default function Seats({ setSucessInfo, sucessInfo }) {
           seats: selectedSeatsNames,
           title: movieInfo.title,
           time: seats.name,
-          date: dayInfo.date,
+          date: dayInfo.date
         });
         navigate("/sucesso");
       });
@@ -124,7 +128,7 @@ export default function Seats({ setSucessInfo, sucessInfo }) {
             required
             value={cpf}
             onBlur={cpfIsValid}
-            maxlength="11"
+            maxLength="11"
           />
           <div className="end-of-page">
             <button type="submit" className="end-button">
